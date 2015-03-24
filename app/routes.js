@@ -18,8 +18,16 @@ module.exports = {
       res.render('RTI/data3.html');
     });
 
+    app.get('/RTI/data4.html', function (req, res) {
+      res.render('RTI/data4.html');
+    });
+
     app.get('/RTI/earnings.html', function (req, res) {
       res.render('RTI/earnings.html');
+    });
+
+    app.get('/RTI/earnings2.html', function (req, res) {
+      res.render('RTI/earnings2.html');
     });
 
     app.get('/RTI/setInterest.html', function (req, res) {
