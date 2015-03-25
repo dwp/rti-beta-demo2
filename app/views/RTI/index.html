@@ -10,63 +10,64 @@
 
 	<div class="logo-banner">
 		<div class="logo">
-			<span class="organisation-logo">Department for Work and Pensions</span>
+			<span class="organisation-logo">Department for Work &amp; Pensions</span>
 		</div>
 	</div>
 
 
 	<form method="post" id="form-nino" action="./data" enctype="application/x-www-form-urlencoded" class="form">
-    <h1 class="heading-large">Search</h1>
+    <h1 class="heading-large" style="margin-bottom: 40px">Search Real Time Earnings (RTE)</h1>
 
     <div class="form-group">
-      <label class="form-label-bold" for="input-nino">National Insurance number</label>
-      <p class="form-hint text">For example, 'QQ 12 34 56 C'.</p>
+      <label class="form-label-bold" for="input-nino" style="margin-bottom: 5px;">National Insurance number</label>
+      <!--<p class="form-hint text">For example, 'QQ123456C'.</p>-->
       <div class="validation-wrapper">
         <input type="text" class="form-control" autocomplete="off" name="nino" id="input-nino" maxlength="9" autofocus>
       </div>
     </div>
-
-    <div class="form-group">
-      <fieldset>
-        <legend class="form-label-bold">Date range</legend>
-        <label class="block-label" for="radio-3-months">
-          <input id="radio-3-months" type="radio" checked="checked" name="radioGroup" value="3">
-          3 Months
-        </label>
-        <label class="block-label" for="radio-12-months">
-          <input id="radio-12-months" type="radio" name="radioGroup" value="12">
-          1 Year
-        </label>
-        <label class="block-label" for="radio-all-months">
-          <input id="radio-all-months" type="radio" name="radioGroup" value="all">
-          All Available Data
-        </label>
-      </fieldset>
-    </div>
-
-		<div id="verify" class="hide">
-			<h2 class="heading-large">Income for John Smith</h1>
-	    <div class="grid-row">
-	      <div class="column-half">
-	        <h2 class="bold-medium person-nino">National Insurance Number: AB123456C</h2>
-	        <h3 class="heading-medium">Date of birth: 01/01/1980</h3>
-	      </div>
-	    </div>
-			<a href="./data.html" id="view-data" class="button">Continue </a>
-		</div>
-
-		<div id="setInterest" class="hide">
-			<div class="grid-row">
-	    <div class="column-half">
-	      <h2 class="bold-medium">This customer has not been registered on the Real Time Earnings system (RTE).</h2>
-	      <p><a href="./setInterest.html" id="set-interest" class="button">Set interest</a></p>
-	    </div>
-	    </div>
-		</div>
-
+    
     <div class="form-group">
       <a href="#" id="submit-nino" class="button">Search</a>
     </div>
+
+		
+		<div id="verify" class="hide">
+			<div class="panel-indent">
+					<h2 class="heading-medium" style="margin-top: 0; margin-bottom: 0">John Smith</h2>
+		      <p class="font-xsmall">National Insurance number: AB 12 34 56 C <br />Date of birth: 03 12 1980</p>
+  
+	    
+	    <div class="form-group">
+	      <fieldset>
+	        <legend class="form-label-bold">Date range</legend>
+	        <label class="block-label" for="radio-3-months">
+	          <input id="radio-3-months" type="radio" checked="checked" name="radioGroup" value="3">
+	          3 Months
+	        </label>
+	        <label class="block-label" for="radio-12-months">
+	          <input id="radio-12-months" type="radio" name="radioGroup" value="12">
+	          1 Year
+	        </label>
+	        <label class="block-label" for="radio-all-months">
+	          <input id="radio-all-months" type="radio" name="radioGroup" value="all">
+	          All Available Data
+	        </label>
+	      </fieldset>
+	    </div>
+	    
+			<a href="./data.html" id="view-data" class="button">View</a>
+		
+			</div>		
+		</div>
+
+		<div id="setInterest" class="hide">
+			<div class="grid-row panel-indent">
+	    <div class="column-half">
+	      <h3>This customer is not yet registered</h3>
+	      <p><a href="./setInterest.html" id="set-interest" class="secondary-button">Set interest</a></p>
+	    </div>
+	    </div>
+		</div>
 
   </form>
 </main>
