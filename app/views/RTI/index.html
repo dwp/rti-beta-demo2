@@ -1,8 +1,10 @@
+<div id="full-width">
 {{<layout}}
 
 {{$pageTitle}}
 	DWP - View Income
 {{/pageTitle}}
+
 
 {{$content}}
 
@@ -14,59 +16,111 @@
 		</div>
 	</div>
 
-
 	<form method="post" id="form-nino" action="./data" enctype="application/x-www-form-urlencoded" class="form">
-    <h1 class="heading-large">Search</h1>
+    <h1 class="heading-large">Search Real Time Earnings (RTE)</h1>
 
     <div class="form-group">
       <label class="form-label-bold" for="input-nino">National Insurance number</label>
-      <p class="form-hint text">For example, 'QQ 12 34 56 C'.</p>
       <div class="validation-wrapper">
         <input type="text" class="form-control" autocomplete="off" name="nino" id="input-nino" maxlength="9" autofocus>
       </div>
     </div>
-
-    <div class="form-group">
-      <fieldset>
-        <legend class="form-label-bold">Date range</legend>
-        <label class="block-label" for="radio-3-months">
-          <input id="radio-3-months" type="radio" checked="checked" name="radioGroup" value="3">
-          3 Months
-        </label>
-        <label class="block-label" for="radio-12-months">
-          <input id="radio-12-months" type="radio" name="radioGroup" value="12">
-          1 Year
-        </label>
-        <label class="block-label" for="radio-all-months">
-          <input id="radio-all-months" type="radio" name="radioGroup" value="all">
-          All Available Data
-        </label>
-      </fieldset>
-    </div>
-
-		<div id="verify" class="hide">
-			<h2 class="heading-large">Income for John Smith</h1>
-	    <div class="grid-row">
-	      <div class="column-half">
-	        <h2 class="bold-medium person-nino">National Insurance Number: AB123456C</h2>
-	        <h3 class="heading-medium">Date of birth: 01/01/1980</h3>
-	      </div>
-	    </div>
-			<a href="./data.html" id="view-data" class="button">Continue </a>
-		</div>
-
-		<div id="setInterest" class="hide">
-			<div class="grid-row">
-	    <div class="column-half">
-	      <h2 class="bold-medium">This customer has not been registered on the Real Time Earnings system (RTE).</h2>
-	      <p><a href="./setInterest.html" id="set-interest" class="button">Set interest</a></p>
-	    </div>
-	    </div>
-		</div>
-
     <div class="form-group">
       <a href="#" id="submit-nino" class="button">Search</a>
     </div>
+
+		<div id="verify" class="hide">
+			<div class="panel-indent">
+				<h2 id="verify-name" class="heading-medium">John Smith</h2>
+			  <p class="font-xsmall">National Insurance number: AB 12 34 56 C <br />Date of birth: 03 12 1980</p>
+
+				<div class="form-group">
+		      <fieldset>
+		        <legend class="form-label-bold">Date range</legend>
+		        <label class="block-label" for="radio-3-months">
+		          <input id="radio-3-months" type="radio" checked="checked" name="radioGroup" value="3">
+		          3 Months
+		        </label>
+		        <label class="block-label" for="radio-12-months">
+		          <input id="radio-12-months" type="radio" name="radioGroup" value="12">
+		          1 Year
+		        </label>
+		        <label class="block-label" for="radio-all-months">
+		          <input id="radio-all-months" type="radio" name="radioGroup" value="all">
+		          All Available Data
+		        </label>
+		      </fieldset>
+		    </div>
+				<a href="./data.html" id="view-data" class="button">View</a>
+			</div>
+		</div>
+
+		<div id="setInterest" class="hide">
+			<div class="panel-indent">
+
+	      <h3 id="interest-hd" class="heading-medium">This customer is not yet registered</h3>
+	      <div class="form-group">
+	        <label class="form-label-bold" for="first-name">First name</label>
+	        <div class="validation-wrapper">
+	          <input class="form-control" autocomplete="off" id="first-name" type="text"/>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <label class="form-label-bold" for="last-name">Last name</label>
+	        <div class="validation-wrapper">
+	          <input class="form-control" autocomplete="off" id="last-name" type="text"/>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <label class="form-label-bold" for="input-nino">Confirm National Insurance number</label>
+	        <div class="validation-wrapper">
+	          <input type="text" class="form-control" autocomplete="off" name="nino" id="input-nino" maxlength="9" />
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <fieldset class="inline fieldset-dob">
+	          <legend class="form-label-bold">Date of birth</legend>
+	          <div class="form-group form-group-compound">
+	            <div class="form-date">
+	              <p class="form-hint">For example, 31 3 1980</p>
+	              <div class="form-group form-group-day">
+	                <label for="dob-day">Day</label>
+	                <input class="form-control" id="dob-day" type="number" autocomplete="off" pattern="[0-9]*" min="0" max="31"/>
+	              </div>
+	              <div class="form-group form-group-month">
+	                <label for="dob-month">Month</label>
+	                <input class="form-control" id="dob-month" type="number" autocomplete="off" pattern="[0-9]*" min="0" max="12"/>
+	              </div>
+	              <div class="form-group form-group-year">
+	                <label for="dob-year-yyyy">Year</label>
+	                <input class="form-control" id="dob-year-yyyy" type="number" autocomplete="off" pattern="[0-9]*" min="0" max="2014"/>
+	              </div>
+	            </div>
+	          </div>
+	        </fieldset>
+	      </div>
+	      <div class="form-group">
+	        <fieldset class="inline">
+	          <legend class="form-label-bold">Gender</legend>
+	          <div class="form-group form-group-compound">
+	            <label class="block-label" data-target="example-ni-number" for="radio-gender-m">
+	            <input id="radio-gender-m" class="hide-show" type="radio" name="gender" value="male"/>
+	              Male
+	            </label>
+	            <label class="block-label" for="radio-gender-f">
+	            <input id="radio-gender-f" class="hide-show" type="radio" name="gender" value="female"/>
+	              Female
+	            </label>
+	            <label class="block-label" for="radio-gender-unknown">
+	            <input id="radio-gender-unknown" class="hide-show" type="radio" name="gender" value="unknown"/>
+	              Unknown
+	            </label>
+	          </div>
+	        </fieldset>
+	      </div>
+	      <p><a href="./interestSet.html" id="set-interest" class="button">Set interest</a></p>
+	    </div>
+		</div>
 
   </form>
 </main>
@@ -74,3 +128,4 @@
 {{/content}}
 
 {{/layout}}
+</div>

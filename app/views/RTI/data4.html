@@ -1,3 +1,4 @@
+<div id="full-width">
 {{<layout}}
 
 {{$pageTitle}}
@@ -31,51 +32,67 @@
     <table>
       <thead>
         <tr>
-					<th scope="col">Date</th>
-					<th scope="col">Tax year</th>
-					<th class="textCenter" scope="col">Pay frequency</th>
-					<th class="textCenter" scope="col">Week period</th>
-					<th class="textCenter" scope="col">Monthly period</th>
-					<th class="textCenter" scope="col">Payment after leaving</th>
-					<th class="textCenter" scope="col">Flexible pension drawdown</th>
-					<th class="textCenter" scope="col">Irregular payment</th>
-					<th scope="col">&nbsp;</th>
-				</tr>
+          <th scope="col">Date</th>
+          <th scope="col">Tax year</th>
+          <th class="numeric" scope="col">Gross</th>
+          <th scope="col">Pay frequency</th>
+          <th scope="col">Week period</th>
+          <th scope="col">Monthly period</th>
+          <th scope="col">Payment after leaving</th>
+          <th scope="col">Flexible pension drawdown</th>
+          <th class="numeric"scope="col">Payments not subject to tax</th>
+          <th class="numeric"scope="col">Deductions from net pay</th>
+          <th scope="col">Irregular payment</th>
+          <th class="numeric" scope="col">Deduction</th>
+          <th class="numeric" scope="col">Net</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-					<td>10/03/15</td>
-					<td>14-15</td>
-					<td class="textCenter">Monthly</td>
-					<td></td>
-					<td class="textCenter">51</td>
-					<td class="textCenter">Y</td>
-					<td class="textCenter">Y</td>
-					<td class="textCenter">Y</td>
-					<td><a href="./earnings2.html">Earnings data</a></td>
-				</tr>
+          <td>10/02/15</td>
+          <td>14-15</td>
+          <td class="numeric">500.00</td>
+          <td>Monthly</td>
+          <td></td>
+          <td>12</td>
+          <td>Y</td>
+          <td>Y</td>
+          <td class="numeric">100</td>
+          <td class="numeric">300</td>
+          <td>Y</td>
+          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
+          <td class="numeric">400.00</td>
+        </tr>
         <tr>
-					<td>10/03/15</td>
-					<td>14-15</td>
-					<td class="textCenter">Monthly</td>
-					<td></td>
-					<td class="textCenter">51</td>
-					<td class="textCenter">Y</td>
-					<td class="textCenter">Y</td>
-					<td class="textCenter">Y</td>
-					<td><a href="./earnings2.html">Earnings data</a></td>
-				</tr>
+          <td>10/02/15</td>
+          <td>14-15</td>
+          <td class="numeric">500.00</td>
+          <td>Monthly</td>
+          <td></td>
+          <td>12</td>
+          <td>Y</td>
+          <td>Y</td>
+          <td class="numeric">100</td>
+          <td class="numeric">300</td>
+          <td>Y</td>
+          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
+          <td class="numeric">400.00</td>
+        </tr>
         <tr>
-					<td>10/03/15</td>
-					<td>14-15</td>
-					<td class="textCenter">Monthly</td>
-					<td></td>
-					<td class="textCenter">51</td>
-					<td class="textCenter">Y</td>
-					<td class="textCenter">Y</td>
-					<td class="textCenter">Y</td>
-					<td><a href="./earnings2.html">Earnings data</a></td>
-				</tr>
+          <td>10/02/15</td>
+          <td>14-15</td>
+          <td class="numeric">500.00</td>
+          <td>Monthly</td>
+          <td></td>
+          <td>12</td>
+          <td>Y</td>
+          <td>Y</td>
+          <td class="numeric">100</td>
+          <td class="numeric">300</td>
+          <td>Y</td>
+          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
+          <td class="numeric">400.00</td>
+        </tr>
       </tbody>
     </table>
 
@@ -162,3 +179,4 @@
 {{/content}}
 
 {{/layout}}
+</div>

@@ -22,6 +22,10 @@ module.exports = {
       res.render('RTI/data4.html');
     });
 
+    app.get('/RTI/data5.html', function (req, res) {
+      res.render('RTI/data5.html');
+    });
+
     app.get('/RTI/earnings.html', function (req, res) {
       res.render('RTI/earnings.html');
     });
