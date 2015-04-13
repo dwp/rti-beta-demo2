@@ -8,27 +8,28 @@
 {{$content}}
 
 <main id="content" role="main">
-
-	<div class="logo-banner">
-		<div class="logo">
-			<span class="organisation-logo">Department for Work and Pensions</span>
+	{{#data}}
+		<div class="logo-banner">
+			<div class="logo">
+				<span class="organisation-logo">Department for Work and Pensions</span>
+			</div>
 		</div>
-	</div>
 
-  <div class="buttons-container">
-      <p><a href="/RTI/index1">Back</a></p>
-  </div>
-  <h1 class="heading-large">Income for John Smith</h1>
-  <div class="grid-row">
-    <div class="column-half">
-      <h2 class="bold-medium person-nino">National Insurance Number: AB123456C</h2>
-    </div>
-  </div>
-  <div class="income-details">
-    <div>
-      <h3 class="heading-medium">Prudentials (Pension)</h3>
-      <p>10/09/14 - 10/04/15</p>
-    </div>
+	  <div class="buttons-container">
+	      <p><a href="/RTI/">Back</a></p>
+	  </div>
+	  <h1 class="heading-large">Income for {{name}}</h1>
+	  <div class="grid-row">
+	    <div class="column-half">
+	      <h2 class="bold-medium person-nino">National Insurance Number: {{nino}}</h2>
+	    </div>
+	  </div>
+		{{#earnings}}
+	  <div class="income-details">
+	    <div>
+	      <h3 class="heading-medium">{{organisation}} {{#pension}}(Pension){{/pension}}{{^pension}}(Employment){{/pension}}</h3>
+	      <p>{{startDate}} - {{endDate}}</p>
+	    </div>
 		<details>
       <summary class="summary">View payments</summary>
 				<table>
@@ -46,189 +47,50 @@
 						</tr>
 					</thead>
 					<tbody>
+						{{#payments}}
 			        <tr>
-			          <td>10/04/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
-			          <td class="numeric">400.00</td>
+			          <td>{{datePaid}}</td>
+			          <td>{{Pay_Frequency}}</td>
+			          <td class="numeric">{{gross}}</td>
+		          	<td class="numeric">{{Value_of_benefits}}</td>
+			          <td class="numeric">{{Value_of_payments}}</td>
+			          <td class="numeric">{{Value_of_deductions_from_net_pay}}</td>
+			          <td class="numeric">
+									{{^ni_contribution}}
+										<a href="#"
+										data-date="{{datePaid}}"
+										data-deduction="{{deduction}}"
+										class="deductions">
+									{{/ni_contribution}}
+
+									{{#ni_contribution}}
+										<a href="#"
+										data-date="{{datePaid}}"
+										data-nic={{ni_contribution}}
+										data-tax={{tax}}
+										data-pensioncontribution={{pension}}
+										class="deductions">
+									{{/ni_contribution}}
+
+									{{deduction}}</a></td>
+			          <td class="numeric">{{net}}</td>
 								<td>
-									<p>Payment after leaving</p>
+									{{#Irregular_Payment_Indicator}}<p>Irregular Payment</p>{{/Irregular_Payment_Indicator}}
+									{{#Indicator that the payment is a payment after date of notification of contract ending}}<p>Payment after leaving</p>{{/Indicator that the payment is a payment after date of notification of contract ending}}
+									{{#Flexibly accessing pension rights}}<p>Pension drawdown </p>{{/Flexibly accessing pension rights}}
 								</td>
 			        </tr>
-			        <tr>
-			          <td>10/03/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
-			          <td class="numeric">400.00</td>
-								<td>
-									<p>Payment after leaving<br />
-										Irregular payment</p>
-								</td>
-			        </tr>
-			        <tr>
-			          <td>10/02/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
-			          <td class="numeric">400.00</td>
-								<td>
-									<p>Payment after leaving <br />
-										Pension drawdown <br />
-										Irregular payment</p>
-								</td>
-			        </tr>
+							{{/payments}}
 			      </tbody>
 			    </table>
 			</details>
 
-    <div>
-      <h3 class="heading-medium">Norwich Union (Pension) </h3>
-      <p>10/07/13 - 10/03/15</p>
-    </div>
-		<details>
-      <summary class="summary">View payments</summary>
-				<table>
-		      <thead>
-		        <tr>
-							<th scope="col">Date</th>
-							<th scope="col">Frequency</th>
-							<th scope="col" class="numeric">Gross</th>
-							<th scope="col" class="numeric">Benefits in kind</th>
-		          <th scope="col" class="numeric">Payments not subject to tax</th>
-							<th scope="col" class="numeric">Deductions from net pay</th>
-		          <th scope="col" class="numeric">Deductions</th>
-							<th scope="col" class="numeric">Net</th>
-							<th scope="col">Status</th>
-						</tr>
-					</thead>
-					<tbody>
-			        <tr>
-			          <td>10/04/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
-			          <td class="numeric">400.00</td>
-								<td>
-									<p>Payment after leaving</p>
-								</td>
-			        </tr>
-			        <tr>
-			          <td>10/03/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
-			          <td class="numeric">400.00</td>
-								<td>
-									<p>Payment after leaving<br />
-										Irregular payment</p>
-								</td>
-			        </tr>
-			        <tr>
-			          <td>10/02/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>
-			          <td class="numeric">400.00</td>
-								<td>
-									<p>Payment after leaving <br />
-										Pension drawdown <br />
-										Irregular payment</p>
-								</td>
-			        </tr>
-			      </tbody>
-			    </table>
-			</details>
-    <div>
-      <h3 class="heading-medium">Asda (Employment) </h3>
-      <p>10/04/13 - 10/03/15</p>
-    </div>
-		<details>
-      <summary class="summary">View payments</summary>
-				<table>
-		      <thead>
-		        <tr>
-							<th scope="col">Date</th>
-							<th scope="col">Frequency</th>
-							<th scope="col" class="numeric">Gross</th>
-							<th scope="col" class="numeric">Benefits in kind</th>
-		          <th scope="col" class="numeric">Payments not subject to tax</th>
-							<th scope="col" class="numeric">Deductions from net pay</th>
-		          <th scope="col" class="numeric">Deductions</th>
-							<th scope="col" class="numeric">Net</th>
-							<th scope="col">Status</th>
-						</tr>
-					</thead>
-					<tbody>
-			        <tr>
-			          <td>10/04/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/12/14" data-deduction="419.44" data-tax="193.00" data-nic="136.44" data-pensioncontribution="90.00" class="deductions">419.44</a></td>
-			          <td class="numeric">400.00</td>
-								<td>
-									<p>Payment after leaving</p>
-								</td>
-			        </tr>
-			        <tr>
-			          <td>10/03/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/12/14" data-deduction="419.44" data-tax="193.00" data-nic="136.44" data-pensioncontribution="90.00" class="deductions">419.44</a></td>
-			          <td class="numeric">400.00</td>
-								<td>
-									<p>Payment after leaving<br />
-										Irregular payment</p>
-								</td>
-			        </tr>
-			        <tr>
-			          <td>10/02/15</td>
-			          <td>Monthly</td>
-			          <td class="numeric">500.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">100.00</td>
-			          <td class="numeric">300.00</td>
-			          <td class="numeric"><a href="#" data-date="10/12/14" data-deduction="419.44" data-tax="193.00" data-nic="136.44" data-pensioncontribution="90.00" class="deductions">419.44</a></td>
-			          <td class="numeric">400.00</td>
-								<td>
-									<p>Payment after leaving <br />
-										Pension drawdown <br />
-										Irregular payment</p>
-								</td>
-			        </tr>
-			      </tbody>
-			    </table>
-			</details>
+
   </div>
   <div class="buttons-container">
     <p><a href="/RTI/index1">Back</a></p>
   </div>
-
+{{/earnings}}
 	<div class="modal fade" id="deductions-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -241,6 +103,7 @@
 	    </div>
 	  </div>
 	</div>
+	{{/data}}
 </main>
 
 {{/content}}

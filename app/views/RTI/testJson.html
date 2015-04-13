@@ -1,0 +1,176 @@
+<div id="full-width">
+{{<layout}}
+
+{{$pageTitle}}
+	DWP - View Income
+{{/pageTitle}}
+
+{{$content}}
+
+<main id="content" role="main">
+  {{#data}}
+
+
+	<div class="logo-banner">
+		<div class="logo">
+			<span class="organisation-logo">Department for Work and Pensions</span>
+		</div>
+	</div>
+
+  <div class="buttons-container">
+      <p><a href="/RTI/index1">Back</a></p>
+  </div>
+  <h1 class="heading-large">Income for {{name}}</h1>
+  <div class="grid-row">
+    <div class="column-half">
+      <h2 class="bold-medium person-nino">National Insurance Number: {{nino}}</h2>
+    </div>
+  </div>
+
+  <div class="income-details">
+
+  {{#earnings}}
+  <div>
+    <h3 class="heading-medium">{{Employer Name 1}} - {{Employer Name 2}}</h3>
+    <p>{{Employment_Start_Date}} - {{Employment_End_Date}}</p>
+  </div>
+  <details>
+    <summary class="summary">View payments</summary>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Tax year</th>
+          <th class="numeric" scope="col">Gross</th>
+          <th class="textCenter" scope="col">Pay frequency</th>
+          <th class="textCenter" scope="col">Week period</th>
+          <th class="textCenter" scope="col">Monthly period</th>
+          <th class="textCenter" scope="col">Payment after leaving</th>
+          <th class="textCenter" scope="col">Flexible pension drawdown</th>
+					<th class="textCenter" scope="col">Occupational pension indicator</th>
+          <th scope="col" class="numeric">Benefits in kind</th>
+          <th class="numeric"scope="col">Payments not subject to tax</th>
+          <th class="numeric"scope="col">Deductions from net pay</th>
+          <th class="textCenter" scope="col">Irregular payment</th>
+          <th class="numeric" scope="col">Deduction</th>
+          <th class="numeric" scope="col">Net</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#payments}}
+        <tr>
+          <td>{{Payment_Date}}</td>
+          <td>{{Tax Year}}</td>
+          <td class="numeric">
+            <script>
+            document.write(parseFloat({{Taxable_Pay}}
+							{{#Value_of_benefits}} + {{Value_of_benefits}} {{/Value_of_benefits}}
+							{{#Value_of_employee_pension}} + {{Value_of_employee_pension}}  {{/Value_of_employee_pension}}).toFixed(2))
+            </script>
+          </td>
+          <td class="textCenter">{{Pay_Frequency}}</td>
+          <td class="textCenter">{{Tax_Week_No}}</td>
+          <td class="textCenter">{{Tax_Month_No}}</td>
+          <td class="textCenter">
+            {{#Indicator that the payment is a payment after date of notification of contract ending}}
+              {{Indicator that the payment is a payment after date of notification of contract ending}}
+            {{/Indicator that the payment is a payment after date of notification of contract ending}}
+          </td>
+          <td class="textCenter">
+						{{#Flexibly accessing pension rights}}
+						<script>
+							var flexPension = '{{Flexibly accessing pension rights}}';
+								if(flexPension !== 'N') {
+									document.write('{{Flexibly accessing pension rights}}')
+								}
+						</script>
+						{{/Flexibly accessing pension rights}}</td>
+					<td class="textCenter">
+						{{#Occupational_Pension_Indicator}}
+							{{Occupational_Pension_Indicator}}
+						{{/Occupational_Pension_Indicator}}
+					</td>
+          <td class="numeric">
+            {{#Benefits_Value}}
+              <script>
+              document.write(parseFloat({{Benefits_Value}}).toFixed(2))
+              </script>
+            {{/Benefits_Value}}
+            {{^Benefits_Value}}0.00{{/Benefits_Value}}
+          </td>
+          <td class="numeric">
+            {{#Value_of_payments}}
+              <script>
+              document.write(parseFloat({{Value_of_payments}}).toFixed(2))
+              </script>
+            {{/Value_of_payments}}
+            {{^Value_of_payments}}0.00{{/Value_of_payments}}
+          </td>
+          <td class="numeric">
+            {{#Value_of_deductions_from_net_pay}}
+              <script>
+              document.write(parseFloat({{Value_of_deductions_from_net_pay}}).toFixed(2))
+              </script>
+            {{/Value_of_deductions_from_net_pay}}
+            {{^Value_of_deductions_from_net_pay}}0.00{{/Value_of_deductions_from_net_pay}}
+          </td>
+          <td class="textCenter">
+            {{#Irregular_Payment_Indicator}}
+              {{Irregular_Payment_Indicator}}
+            {{/Irregular_Payment_Indicator}}
+          </td>
+          <td class="numeric">
+						{{#Value_of_tax_deducted}}
+            <script>
+            if ({{Value_of_tax_deducted}} === 0) {
+              document.write(parseFloat(0.00).toFixed(2))
+            } else {
+							document.write(parseFloat({{Value_of_tax_deducted}}).toFixed(2))
+						}
+            </script>
+						{{/Value_of_tax_deducted}}
+						{{^Value_of_tax_deducted}}
+							0.00
+						{{/Value_of_tax_deducted}}
+            <!--<a href="#" data-date="10/02/15" data-deduction="100.00" class="deductions">100.00</a></td>-->
+          <td class="numeric">
+            <script>
+              document.write(parseFloat(({{Taxable_Pay}} {{#Value_of_benefits}} + {{Value_of_benefits}} {{/Value_of_benefits}} {{#Value_of_employee_pension}} + {{Value_of_employee_pension}}  {{/Value_of_employee_pension}}) - {{#Value_of_tax_deducted}}{{Value_of_tax_deducted}}{{/Value_of_tax_deducted}} {{^Value_of_tax_deducted}}0 {{/Value_of_tax_deducted}}).toFixed(2) )
+            </script>
+          </td>
+        </tr>
+        {{/payments}}
+      </tbody>
+    </table>
+  </details>
+  {{/earnings}}
+
+
+
+
+
+
+  </div>
+  <div class="buttons-container">
+    <p><a href="/RTI/index1">Back</a></p>
+  </div>
+
+	<div class="modal fade" id="deductions-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close pull-right" data-dismiss="modal">
+	          <span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+	          <h4 class="heading-small" id="popupTitle">Deductions breakdown...</h4>
+	        </div>
+	        <div class="modal-body"></div>
+	    </div>
+	  </div>
+	</div>
+  {{/data}}
+</main>
+
+{{/content}}
+
+{{/layout}}
+</div>

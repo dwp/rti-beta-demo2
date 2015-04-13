@@ -1,3 +1,5 @@
+var tableData = require('./assets/javascripts/json/test.js');
+
 module.exports = {
   bind : function (app) {
 
@@ -6,16 +8,46 @@ module.exports = {
     });
 
     // add your routes here
-    app.get('/RTI/data.html', function (req, res) {
-      res.render('RTI/data.html');
+    app.post('/RTI/data.html', function (req, res) {
+      if(req.body.radioGroup1 = 3) {
+        var tableData = require('./assets/javascripts/json/data_3.js');
+      } else if(req.body.radioGroup1 = 12) {
+        var tableData = require('./assets/javascripts/json/data_12.js');
+      } else if(req.body.radioGroup1 = 'all') {
+        var tableData = require('./assets/javascripts/json/data_all.js');
+      }
+
+      res.render('RTI/data.html', {
+        data : tableData.getTableData()
+      })
     });
 
-    app.get('/RTI/data2.html', function (req, res) {
-      res.render('RTI/data2.html');
+    app.post('/RTI/data2.html', function (req, res) {
+      if(req.body.radioGroup1 = 3) {
+        var tableData = require('./assets/javascripts/json/data_3.js');
+      } else if(req.body.radioGroup1 = 12) {
+        var tableData = require('./assets/javascripts/json/data_12.js');
+      } else if(req.body.radioGroup1 = 'all') {
+        var tableData = require('./assets/javascripts/json/data_all.js');
+      }
+
+      res.render('RTI/data2.html', {
+        data : tableData.getTableData()
+      })
     });
 
-    app.get('/RTI/data3.html', function (req, res) {
-      res.render('RTI/data3.html');
+    app.post('/RTI/data3.html', function (req, res) {
+      if(req.body.radioGroup1 = 3) {
+        var tableData = require('./assets/javascripts/json/data_3.js');
+      } else if(req.body.radioGroup1 = 12) {
+        var tableData = require('./assets/javascripts/json/data_12.js');
+      } else if(req.body.radioGroup1 = 'all') {
+        var tableData = require('./assets/javascripts/json/data_all.js');
+      }
+
+      res.render('RTI/data3.html', {
+        data : tableData.getTableData()
+      })
     });
 
     app.get('/RTI/data4.html', function (req, res) {
@@ -40,6 +72,12 @@ module.exports = {
 
     app.get('/RTI/interestSet.html', function (req, res) {
       res.render('RTI/interestSet.html');
+    });
+
+    app.get('/RTI/testJson.html' , function (req, res) {
+      res.render('RTI/testJson.html', {
+        data : tableData.getTableData()
+      })
     });
 
   }
