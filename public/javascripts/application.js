@@ -57,5 +57,13 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       $('#deductions-modal').modal('show');
     return false;
   });
+  sessionStorage.datarange = 3;
+  var inputs = document.querySelectorAll('.dataRange');
+  for(var i=0; i < inputs.length; i++) {
+  inputs[i].addEventListener ('click', function (e) {
+  console.log($("input[name=dataRange]:checked").val())
+  sessionStorage.datarange = $("input[name=dataRange]:checked").val();
+  })
+  }
 
 })();
